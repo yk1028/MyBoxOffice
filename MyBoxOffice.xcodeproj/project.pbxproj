@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		EC352FCA21BD0D1100433AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FC921BD0D1100433AAD /* AppDelegate.swift */; };
-		EC352FCC21BD0D1100433AAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FCB21BD0D1100433AAD /* ViewController.swift */; };
+		EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FCB21BD0D1100433AAD /* TableViewController.swift */; };
 		EC352FCF21BD0D1100433AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC352FCD21BD0D1100433AAD /* Main.storyboard */; };
 		EC352FD121BD0D1100433AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC352FD021BD0D1100433AAD /* Assets.xcassets */; };
 		EC352FD421BD0D1100433AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC352FD221BD0D1100433AAD /* LaunchScreen.storyboard */; };
+		EC352FDC21BD100400433AAD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDB21BD100400433AAD /* CollectionViewController.swift */; };
+		EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDD21BD105000433AAD /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EC352FC621BD0D1100433AAD /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBoxOffice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC352FC921BD0D1100433AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC352FCB21BD0D1100433AAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC352FCB21BD0D1100433AAD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		EC352FCE21BD0D1100433AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC352FD021BD0D1100433AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC352FD321BD0D1100433AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC352FD521BD0D1100433AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC352FDB21BD100400433AAD /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		EC352FDD21BD105000433AAD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				EC352FC921BD0D1100433AAD /* AppDelegate.swift */,
-				EC352FCB21BD0D1100433AAD /* ViewController.swift */,
+				EC352FCB21BD0D1100433AAD /* TableViewController.swift */,
 				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
+				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
+				EC352FDB21BD100400433AAD /* CollectionViewController.swift */,
 				EC352FD021BD0D1100433AAD /* Assets.xcassets */,
 				EC352FD221BD0D1100433AAD /* LaunchScreen.storyboard */,
 				EC352FD521BD0D1100433AAD /* Info.plist */,
@@ -136,7 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC352FCC21BD0D1100433AAD /* ViewController.swift in Sources */,
+				EC352FDC21BD100400433AAD /* CollectionViewController.swift in Sources */,
+				EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */,
+				EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */,
 				EC352FCA21BD0D1100433AAD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
