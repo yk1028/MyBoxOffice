@@ -13,6 +13,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     let cellIdentifier: String = "collectionCell"
     var movies: [Movie] = []
     
+    private var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,28 +64,16 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
-    
-    
     // MARK: Life Cylce
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        addFlowLayout()
+        addPullToRefresh()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
-        
-        let flowLayout: UICollectionViewFlowLayout
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
-        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.minimumLineSpacing = 10
-        
-        let halfWidth: CGFloat = UIScreen.main.bounds.width / 2.0
-        let halfheight: CGFloat = UIScreen.main.bounds.height / 2.0
-        
-        //flowLayout.estimatedItemSize = CGSize(width: halfWidth - 30, height: 90) // 예상.. 오토레이아웃에의해 변경 될 수 있다.
-        flowLayout.itemSize = CGSize(width: halfWidth - 16, height: halfheight - 30) // 이렇게하면 크기 고정은 가능, 기기마다 호환은? -> 오토레이아웃 적용시킬 방법?
-        
-        self.collectionView.collectionViewLayout = flowLayout
         
     }
 
@@ -95,7 +85,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        requestMovies()
+        requestMovies(2)
     }
     
     @objc func didRecieveMovieNotification(_ noti: Notification) {
@@ -107,6 +97,42 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+    }
+    
+    // MARK: Layout
+    func addFlowLayout() {
+        let flowLayout: UICollectionViewFlowLayout
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets.init(top: 8, left: 8, bottom: 8, right: 8)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+        
+        let halfWidth: CGFloat = UIScreen.main.bounds.width / 2.0
+        let halfheight: CGFloat = UIScreen.main.bounds.height / 2.0
+        
+        //flowLayout.estimatedItemSize = CGSize(width: halfWidth - 30, height: 90) // 예상.. 오토레이아웃에의해 변경 될 수 있다.
+        flowLayout.itemSize = CGSize(width: halfWidth - 16, height: halfheight) // 이렇게하면 크기 고정은 가능, 기기마다 호환은? -> 오토레이아웃 적용시킬 방법?
+        
+        self.collectionView.collectionViewLayout = flowLayout
+    }
+    
+    // MARK: Refresh
+    func addPullToRefresh() {
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        // refresh Action
+        
+        requestMovies(1)
+        self.refreshControl.endRefreshing()
+        self.collectionView.reloadData()
     }
     
 
