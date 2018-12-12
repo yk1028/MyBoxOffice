@@ -30,8 +30,12 @@ struct Movie: Codable {
     let date: String
     let id: String
     
-    var fullInfo: String {
+    var fullInfoInTable: String {
         return "평점 : \(self.userRating) 예매순위 : \(self.reservationGrade) 예매율 : \(self.reservationRate)"
+    }
+    
+    var fullInfoInCollection: String {
+        return "\(self.reservationGrade)위(\(self.userRating)) / \(self.reservationRate)%"
     }
 
     var releaseDate: String {

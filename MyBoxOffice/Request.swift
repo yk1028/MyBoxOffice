@@ -10,9 +10,11 @@ import Foundation
 
 let DidReceiveMoviesNotification: Notification.Name = Notification.Name("DidRecieveMovies")
 
-func requestMovies() {
+func requestMovies(_ orderType: Int) {
     
-    guard let url:URL = URL(string: "http://connect-boxoffice.run.goorm.io/comments?movie_id=5a54c286e8a71d136fb5378e") else {
+    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(orderType)"
+    
+    guard let url:URL = URL(string: urlString) else {
         return
     }
     
@@ -32,15 +34,13 @@ func requestMovies() {
 
             NotificationCenter.default.post(name: DidReceiveMoviesNotification, object: nil, userInfo: ["movies": movies.movies])
             
-            let movieInfo: MovieInfo = try JSONDecoder().decode(MovieInfo.self, from: data)
-
-            print(movieInfo)
+//            let movieInfo: MovieInfo = try JSONDecoder().decode(MovieInfo.self, from: data)
+//
+//            print(movieInfo)
             
 //            let comments: APICommentsResponse = try JSONDecoder().decode(APICommentsResponse.self, from: data)
 //
 //            print(comments.comments)
-            
-            //NotificationCenter.default.post(name: DidReceiveMoviesNotification, object: nil, userInfo: ["movie": movies.movies])
             
         } catch(let err) {
             print(err.localizedDescription)

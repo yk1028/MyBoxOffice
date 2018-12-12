@@ -13,6 +13,8 @@ class MoviesTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var thumbImageView: UIImageView!
+    @IBOutlet var gradeImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

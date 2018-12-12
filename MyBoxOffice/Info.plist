@@ -38,6 +38,16 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>movie.phinf.naver.net</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>movie2.phinf.naver.net</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>connect-boxoffice.run.goorm.io</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>

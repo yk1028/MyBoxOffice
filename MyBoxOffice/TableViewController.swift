@@ -14,7 +14,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     let movieCellIdentifier: String = "movieCell"
     var movies: [Movie] = []
     
-    // MARK: DataSource Methods
+    // MARK: Tableview DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -29,13 +29,42 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.infoLabel?.text = movie.fullInfo
         cell.dateLabel?.text = movie.releaseDate
         
+        let imageURL: URL = URL(string: movie.thumb)!
+
+        //dispatchQueue?
+        OperationQueue().addOperation {
+            let imageData: Data = try! Data.init(contentsOf: imageURL)
+            let image: UIImage = UIImage(data: imageData)!
+
+            OperationQueue.main.addOperation {
+                cell.thumbImageView?.image = image // UI와 관련된 코드는 메인 스레드에서 동작해야함
+            }
+        }
+        
+        var grade: String
+        switch movie.grade {
+        case 0:
+            grade = "ic_allages"
+        case 12:
+            grade = "ic_12"
+        case 15:
+            grade = "ic_15"
+        case 19:
+            grade = "ic_19"
+        default:
+            grade = "img_placeholder"
+        }
+        
+        cell.gradeImageView?.image = UIImage(named: grade)
+        
+        
         return cell
     }
     
-    //Todo: delegate method인가?
+    // MARK: Tableview Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 100.0;
+        return 116.0;
     }
     
     // MARK: Life Cycle
@@ -44,12 +73,18 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
-        requestMovies()
+        requestMovies(0);
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        requestMovies()
     }
     
     @objc func didRecieveMovieNotification(_ noti: Notification) {
@@ -61,12 +96,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        requestMovies()
     }
     
     
