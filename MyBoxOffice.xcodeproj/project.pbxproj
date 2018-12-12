@@ -17,6 +17,7 @@
 		EC352FE021BD1F3E00433AAD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDF21BD1F3E00433AAD /* Request.swift */; };
 		EC352FE221BD1F4B00433AAD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE121BD1F4B00433AAD /* Model.swift */; };
 		EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */; };
+		ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EC352FDF21BD1F3E00433AAD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		EC352FE121BD1F4B00433AAD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
+		ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				EC352FDF21BD1F3E00433AAD /* Request.swift */,
 				EC352FE121BD1F4B00433AAD /* Model.swift */,
 				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
+				ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */,
 				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
 				EC352FDB21BD100400433AAD /* CollectionViewController.swift */,
 				EC352FD021BD0D1100433AAD /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				EC352FDC21BD100400433AAD /* CollectionViewController.swift in Sources */,
 				EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */,
 				EC352FE021BD1F3E00433AAD /* Request.swift in Sources */,
+				ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */,
 				EC352FE221BD1F4B00433AAD /* Model.swift in Sources */,
 				EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */,
 				EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */,

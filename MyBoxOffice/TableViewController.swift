@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    let movieCellIdentifier: String = "movieCell"
+    let movieCellIdentifier: String = "tableCell"
     var movies: [Movie] = []
     
     // MARK: Tableview DataSource Methods
@@ -26,7 +26,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let movie: Movie = self.movies[indexPath.row]
         
         cell.titleLabel?.text = movie.title
-        cell.infoLabel?.text = movie.fullInfo
+        cell.infoLabel?.text = movie.fullInfoInTable
         cell.dateLabel?.text = movie.releaseDate
         
         let imageURL: URL = URL(string: movie.thumb)!
@@ -72,8 +72,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
-        
-        requestMovies(0);
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,7 +82,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        requestMovies()
+        requestMovies()
     }
     
     @objc func didRecieveMovieNotification(_ noti: Notification) {

@@ -10,9 +10,9 @@ import Foundation
 
 let DidReceiveMoviesNotification: Notification.Name = Notification.Name("DidRecieveMovies")
 
-func requestMovies(_ orderType: Int) {
+func requestMovies() {
     
-    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(orderType)"
+    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=0"
     
     guard let url:URL = URL(string: urlString) else {
         return
