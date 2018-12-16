@@ -10,6 +10,7 @@ import Foundation
 
 // 영화 목록
 struct APIMoviesResponse: Codable {
+    
     let movies: [Movie]
     let orderType: Int
     
@@ -56,13 +57,14 @@ struct Movie: Codable {
 
 // 영화 상세정보
 struct MovieInfo: Codable {
+    
     let audience: Int
     let actor: String
     let duration: Int
     let director: String
     let synopsis: String
     let genre: String
-    let grade: Int //0: 전체이용가 12: 12세 이용가 15: 15세 이용가 19: 19세 이용가
+    let grade: Int
     let image: String
     let reservationGrade: Int
     let title: String
@@ -70,6 +72,14 @@ struct MovieInfo: Codable {
     let userRating: Double
     let date: String
     let id: String
+    
+    var genreAndDuration: String {
+        return "\(self.genre)/\(self.duration)분"
+    }
+    
+    var reservationInfo: String {
+        return "\(self.reservationGrade)위 \(self.reservationRate)%"
+    }
     
     private enum CodingKeys: String, CodingKey {
         case audience, actor, duration
@@ -84,10 +94,13 @@ struct MovieInfo: Codable {
 
 // 한줄평 목록
 struct APICommentsResponse: Codable {
+    
     let comments: [Comment]
+    
 }
 
 struct Comment: Codable {
+    
     let rating: Double
     let timestamp: Double
     let writer: String

@@ -17,13 +17,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Collection view data source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //as! 안쓰고 안전하게 하는방법? guard사용
+        //as! 안쓰고 안전하게 하는방법?
         let cell: MoviesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! MoviesCollectionViewCell
         
         let movie: Movie = self.movies[indexPath.item]
@@ -61,10 +62,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         cell.gradeImageView?.image = UIImage(named: grade)
         
+        cell.movieId = movie.id
+        
         return cell
     }
     
-    // MARK: Life Cylce
+    // MARK: - Life Cylce
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -99,7 +102,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     func addFlowLayout() {
         let flowLayout: UICollectionViewFlowLayout
         flowLayout = UICollectionViewFlowLayout()
@@ -110,13 +113,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let halfWidth: CGFloat = UIScreen.main.bounds.width / 2.0
         let halfheight: CGFloat = UIScreen.main.bounds.height / 2.0
         
-        //flowLayout.estimatedItemSize = CGSize(width: halfWidth - 30, height: 90) // 예상.. 오토레이아웃에의해 변경 될 수 있다.
-        flowLayout.itemSize = CGSize(width: halfWidth - 16, height: halfheight) // 이렇게하면 크기 고정은 가능, 기기마다 호환은? -> 오토레이아웃 적용시킬 방법?
+        flowLayout.itemSize = CGSize(width: halfWidth - 16, height: halfheight)
         
         self.collectionView.collectionViewLayout = flowLayout
     }
     
-    // MARK: Refresh
+    // MARK: - Refresh
     func addPullToRefresh() {
         if #available(iOS 10.0, *) {
             collectionView.refreshControl = refreshControl
@@ -128,22 +130,32 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc func refresh() {
-        // refresh Action
-        
         requestMovies(1)
-        self.refreshControl.endRefreshing()
         self.collectionView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
-
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else {
+            return
+        }
+        
+        guard let cell: MoviesCollectionViewCell = sender as? MoviesCollectionViewCell else {
+            return
+        }
+        
+        guard let movieId = cell.movieId else {
+            return
+        }
+        
+        nextViewController.movieId = movieId
+        
     }
-    */
 
 }

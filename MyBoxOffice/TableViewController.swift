@@ -17,7 +17,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private var refreshControl = UIRefreshControl()
     
-    // MARK: Tableview DataSource Methods
+    // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -60,16 +60,18 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.gradeImageView?.image = UIImage(named: grade)
         
+        cell.movieId = movie.id
+        
         return cell
     }
     
-    // MARK: Tableview Delegate Methods
+    // MARK: Table view delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 130.0;
     }
     
-    // MARK: Life Cycle
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -77,7 +79,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         addPullToRefresh()
         
         //Add Observer for movies data
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMoviesNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,7 +93,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         requestMovies(0)
     }
     
-    @objc func didRecieveMovieNotification(_ noti: Notification) {
+    @objc func didRecieveMoviesNotification(_ noti: Notification) {
         
         guard let movies: [Movie] = noti.userInfo?["movies"] as? [Movie] else { return }
         
@@ -102,7 +104,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    // MARK: Refresh
+    // MARK: - Refresh
     func addPullToRefresh() {
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
@@ -114,11 +116,32 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @objc func refresh() {
-        // refresh Action
-        
         requestMovies(1)
-        self.refreshControl.endRefreshing()
         self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else {
+            return
+        }
+        
+        guard let cell: MoviesTableViewCell = sender as? MoviesTableViewCell else {
+            return
+        }
+        
+        guard let movieId = cell.movieId else {
+            return
+        }
+        
+        nextViewController.movieId = movieId
+        
     }
     
     

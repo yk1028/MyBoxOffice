@@ -16,4 +16,6 @@ class MoviesCollectionViewCell: UICollectionViewCell {
     @IBOutlet var thumbImageView: UIImageView!
     @IBOutlet var gradeImageView: UIImageView!
     
+    var movieId: String?
+    
 }

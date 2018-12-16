@@ -11,13 +11,15 @@
 		EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FCB21BD0D1100433AAD /* TableViewController.swift */; };
 		EC352FCF21BD0D1100433AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC352FCD21BD0D1100433AAD /* Main.storyboard */; };
 		EC352FD121BD0D1100433AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC352FD021BD0D1100433AAD /* Assets.xcassets */; };
-		EC352FD421BD0D1100433AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC352FD221BD0D1100433AAD /* LaunchScreen.storyboard */; };
 		EC352FDC21BD100400433AAD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDB21BD100400433AAD /* CollectionViewController.swift */; };
 		EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDD21BD105000433AAD /* InfoViewController.swift */; };
 		EC352FE021BD1F3E00433AAD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDF21BD1F3E00433AAD /* Request.swift */; };
 		EC352FE221BD1F4B00433AAD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE121BD1F4B00433AAD /* Model.swift */; };
 		EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */; };
+		ECE5A68221C4F3A2007BA2AC /* LayerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */; };
+		ECE5A68821C50B13007BA2AC /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */; };
 		ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */; };
+		ECFC304721C6169B006E8586 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC304621C6169B006E8586 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,14 +28,16 @@
 		EC352FCB21BD0D1100433AAD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		EC352FCE21BD0D1100433AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC352FD021BD0D1100433AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EC352FD321BD0D1100433AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC352FD521BD0D1100433AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC352FDB21BD100400433AAD /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		EC352FDD21BD105000433AAD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		EC352FDF21BD1F3E00433AAD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		EC352FE121BD1F4B00433AAD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
+		ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerExtention.swift; sourceTree = "<group>"; };
+		ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECFC304621C6169B006E8586 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +72,17 @@
 			children = (
 				EC352FC921BD0D1100433AAD /* AppDelegate.swift */,
 				EC352FCB21BD0D1100433AAD /* TableViewController.swift */,
+				ECFC304621C6169B006E8586 /* Order.swift */,
 				EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */,
 				EC352FDF21BD1F3E00433AAD /* Request.swift */,
 				EC352FE121BD1F4B00433AAD /* Model.swift */,
 				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
+				ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */,
 				ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */,
 				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
+				ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */,
 				EC352FDB21BD100400433AAD /* CollectionViewController.swift */,
 				EC352FD021BD0D1100433AAD /* Assets.xcassets */,
-				EC352FD221BD0D1100433AAD /* LaunchScreen.storyboard */,
 				EC352FD521BD0D1100433AAD /* Info.plist */,
 			);
 			path = MyBoxOffice;
@@ -141,7 +147,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC352FD421BD0D1100433AAD /* LaunchScreen.storyboard in Resources */,
 				EC352FD121BD0D1100433AAD /* Assets.xcassets in Resources */,
 				EC352FCF21BD0D1100433AAD /* Main.storyboard in Resources */,
 			);
@@ -158,10 +163,13 @@
 				EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */,
 				EC352FE021BD1F3E00433AAD /* Request.swift in Sources */,
 				ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */,
+				ECFC304721C6169B006E8586 /* Order.swift in Sources */,
 				EC352FE221BD1F4B00433AAD /* Model.swift in Sources */,
 				EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */,
 				EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */,
+				ECE5A68821C50B13007BA2AC /* CommentsTableViewCell.swift in Sources */,
 				EC352FCA21BD0D1100433AAD /* AppDelegate.swift in Sources */,
+				ECE5A68221C4F3A2007BA2AC /* LayerExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,14 +182,6 @@
 				EC352FCE21BD0D1100433AAD /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EC352FD221BD0D1100433AAD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC352FD321BD0D1100433AAD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
