@@ -76,7 +76,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidLayoutSubviews() {
-        self.repositionBorders()
+        self.repositionBorders() // Repositioning borders when device was rotated.
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,7 +183,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: - Custom function
-    //Convert unix time stamp to 'yyyy-MM-dd HH:mm:ss' format
+    // Convert `timestamp` to 'yyyy-MM-dd HH:mm:ss' format
     func timestampToString(_ timestamp: Double) -> String {
         
         let date = Date(timeIntervalSince1970: timestamp)
@@ -195,7 +195,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return dateFormatter.string(from: date)
     }
     
-    // Fill star images by rating
+    // Fill `stars` with images based on `rating`
     func starRating(rating: Double, stars: [UIImageView]) {
         
         if stars.count != 5 { return }
@@ -240,7 +240,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.borders[4].frame = CGRect.init(x: screenWidth / 3.0, y: 0, width: 1.0, height: ratingStackView.frame.height)
     }
     
-    //Tap the Image to full screen
+    // Tap the Image to full screen
     @objc func imageTapped() {
         let newImageView = UIImageView(image: self.imageView.image)
         newImageView.frame = UIScreen.main.bounds
@@ -260,15 +260,5 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 
 }

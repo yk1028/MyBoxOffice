@@ -30,7 +30,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //as! 안쓰고 안전하게 하는방법?
         let cell: MoviesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! MoviesCollectionViewCell
         
         let movie: Movie = self.movies[indexPath.item]
@@ -81,23 +80,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         addFlowLayout()
         addPullToRefresh()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
         requestMovies(viewController: self)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     @objc func didRecieveMovieNotification(_ noti: Notification) {
@@ -202,20 +190,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else {
-            return
-        }
-        
-        guard let cell: MoviesCollectionViewCell = sender as? MoviesCollectionViewCell else {
-            return
-        }
-        
-        guard let movieId = cell.movieId else {
-            return
-        }
+        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else { return }
+        guard let cell: MoviesCollectionViewCell = sender as? MoviesCollectionViewCell else { return }
+        guard let movieId = cell.movieId else { return }
         
         nextViewController.movieId = movieId
-        
     }
-
 }

@@ -94,15 +94,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         requestMovies(viewController: self)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     @objc func didRecieveMoviesNotification(_ noti: Notification) {
         
         guard let movies: [Movie] = noti.userInfo?["movies"] as? [Movie] else { return }
@@ -189,17 +180,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else {
-            return
-        }
-        
-        guard let cell: MoviesTableViewCell = sender as? MoviesTableViewCell else {
-            return
-        }
-        
-        guard let movieId = cell.movieId else {
-            return
-        }
+        guard let nextViewController: InfoViewController = segue.destination as? InfoViewController else { return }
+        guard let cell: MoviesTableViewCell = sender as? MoviesTableViewCell else { return }
+        guard let movieId = cell.movieId else { return }
         
         nextViewController.movieId = movieId
         

@@ -21,15 +21,4 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet var starImage4: UIImageView!
     @IBOutlet var starImage5: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
