@@ -164,7 +164,17 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         actionSheetController.addAction(releaseDateAction)
         actionSheetController.addAction(cancelAction)
         
-        self.present(actionSheetController, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if let popoverController = actionSheetController.popoverPresentationController {
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+                self.present(actionSheetController, animated: true, completion: nil)
+            }
+        }
+        else {
+            self.present(actionSheetController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Navigation
