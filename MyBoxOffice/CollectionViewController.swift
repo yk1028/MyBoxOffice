@@ -84,7 +84,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
-        requestMovies()
+        requestMovies(viewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,7 +143,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc func refresh() {
-        requestMovies()
+        requestMovies(viewController: self)
         self.collectionView.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -156,19 +156,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let reservationRateAction: UIAlertAction
         reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(0)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(1)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let releaseDateAction: UIAlertAction
         releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(2)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let cancelAction: UIAlertAction

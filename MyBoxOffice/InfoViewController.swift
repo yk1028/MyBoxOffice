@@ -54,8 +54,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieCommentsNotification(_:)), name: DidReceiveMovieCommentsNotification, object: nil)
         
-        requestMovieInfo(self.movieId)
-        requestMovieComments(self.movieId)
+        requestMovieInfo(id: self.movieId, viewController: self)
+        requestMovieComments(id: self.movieId,viewController: self)
         
         self.initBorders()
         
@@ -237,7 +237,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.borders[4].frame = CGRect.init(x: screenWidth / 3.0, y: 0, width: 1.0, height: ratingStackView.frame.height)
     }
     
-    // MARK: -Tap the Image to full screen
+    //Tap the Image to full screen
     @objc func imageTapped() {
         let newImageView = UIImageView(image: self.imageView.image)
         newImageView.frame = UIScreen.main.bounds
@@ -251,6 +251,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    //Dismiss full screen
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false

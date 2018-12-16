@@ -86,7 +86,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Add Observer for movies data
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMoviesNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
-        requestMovies()
+        requestMovies(viewController: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,7 +128,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @objc func refresh() {
-        requestMovies()
+        requestMovies(viewController: self)
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -141,19 +141,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let reservationRateAction: UIAlertAction
         reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(0)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(1)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let releaseDateAction: UIAlertAction
         releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.setOrderType(2)
-            requestMovies()
+            requestMovies(viewController: self)
         })
         
         let cancelAction: UIAlertAction
