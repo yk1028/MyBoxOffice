@@ -50,7 +50,6 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieInfoNotification(_:)), name: DidReceiveMovieInfoNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieCommentsNotification(_:)), name: DidReceiveMovieCommentsNotification, object: nil)
@@ -59,6 +58,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         requestMovieComments(self.movieId)
         
         self.initBorders()
+        
+        self.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
         
     }
     
@@ -210,6 +211,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    // MARK: - Border
     func initBorders() {
         for _ in 0..<5 {
             borders.append(CALayer())
@@ -233,6 +235,26 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.borders[2].frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 8.0)
         self.borders[3].frame = CGRect.init(x: 0, y: 0, width: 1.0, height: self.ratingStackView.frame.height)
         self.borders[4].frame = CGRect.init(x: screenWidth / 3.0, y: 0, width: 1.0, height: ratingStackView.frame.height)
+    }
+    
+    // MARK: -Tap the Image to full screen
+    @objc func imageTapped() {
+        let newImageView = UIImageView(image: self.imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     
     /*
