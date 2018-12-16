@@ -30,7 +30,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: MoviesTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.movieCellIdentifier, for: indexPath) as! MoviesTableViewCell // 강제 캐스팅 말고 더 좋은 방법?
+        let cell: MoviesTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.movieCellIdentifier, for: indexPath) as! MoviesTableViewCell
         
         let movie: Movie = self.movies[indexPath.row]
         
@@ -40,13 +40,12 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let imageURL: URL = URL(string: movie.thumb)!
 
-        //dispatchQueue?
         OperationQueue().addOperation {
             let imageData: Data = try! Data.init(contentsOf: imageURL)
             let image: UIImage = UIImage(data: imageData)!
 
             OperationQueue.main.addOperation {
-                cell.thumbImageView?.image = image // UI와 관련된 코드는 메인 스레드에서 동작해야함
+                cell.thumbImageView?.image = image
             }
         }
         
@@ -191,6 +190,4 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
 }
-
