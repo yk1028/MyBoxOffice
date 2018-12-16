@@ -16,7 +16,6 @@
 		EC352FE021BD1F3E00433AAD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FDF21BD1F3E00433AAD /* Request.swift */; };
 		EC352FE221BD1F4B00433AAD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE121BD1F4B00433AAD /* Model.swift */; };
 		EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */; };
-		ECE5A68221C4F3A2007BA2AC /* LayerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */; };
 		ECE5A68821C50B13007BA2AC /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */; };
 		ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */; };
 		ECFC304721C6169B006E8586 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC304621C6169B006E8586 /* Order.swift */; };
@@ -34,7 +33,6 @@
 		EC352FDF21BD1F3E00433AAD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		EC352FE121BD1F4B00433AAD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
-		ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerExtention.swift; sourceTree = "<group>"; };
 		ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECFC304621C6169B006E8586 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				EC352FDF21BD1F3E00433AAD /* Request.swift */,
 				EC352FE121BD1F4B00433AAD /* Model.swift */,
 				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
-				ECE5A68121C4F3A2007BA2AC /* LayerExtention.swift */,
 				ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */,
 				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
 				ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */,
@@ -169,7 +166,6 @@
 				EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */,
 				ECE5A68821C50B13007BA2AC /* CommentsTableViewCell.swift in Sources */,
 				EC352FCA21BD0D1100433AAD /* AppDelegate.swift in Sources */,
-				ECE5A68221C4F3A2007BA2AC /* LayerExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

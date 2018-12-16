@@ -10,9 +10,10 @@ import UIKit
 
 class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet var titleItem: UINavigationItem!
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var gradeImageView: UIImageView!
-    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var genreAndDurationLabel: UILabel!
@@ -29,14 +30,12 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var starImage5: UIImageView!
     
     @IBOutlet var synopsisTextView: UITextView!
-    
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var totalStackView: UIStackView!
     @IBOutlet var ratingStackView: UIStackView!
     @IBOutlet var synopsisView: UIView!
     @IBOutlet var directorAndActorView: UIView!
     @IBOutlet var commentTitleView: UIView!
-    
     @IBOutlet var tableView: UITableView!
     
     let commentCellIdentifier: String = "commentCell"
@@ -48,7 +47,6 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     // MARK: - Life cycle
     override func viewDidLoad() {
-        print ("\n view did load \n")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -101,6 +99,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
             
+            self.titleItem?.title = movieInfo.title
+            
             var grade: String
             switch movieInfo.grade {
             case 0:
@@ -132,9 +132,9 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.audienceLabel?.text = audience
             
             self.synopsisTextView?.text = movieInfo.synopsis
-        
             self.directorLabel?.text = movieInfo.director
             self.actorLabel?.text = movieInfo.actor
+            
         }
     }
     

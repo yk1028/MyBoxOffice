@@ -110,9 +110,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rVI-YZ-XGj"/>
+                    <navigationItem key="navigationItem" id="ydB-IF-Q57">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_settings" id="6yT-HA-w5g">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="touchUpOrderButton:" destination="BYZ-38-t0r" id="mAE-yh-gw0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Sw6-lX-nCf" id="Gcg-uc-JNZ"/>
+                        <outlet property="titleItem" destination="ydB-IF-Q57" id="nuu-w0-TUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,9 +239,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WbB-xH-ldr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yTk-Hw-Z8U"/>
+                    <navigationItem key="navigationItem" id="XpI-lb-eAp">
+                        <barButtonItem key="backBarButtonItem" title="영화목록" id="Wus-In-wDx">
+                            <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_settings" id="gGb-fw-f7a">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="touchUpOrderButton:" destination="tNT-Ay-YwK" id="QHJ-Qy-dQZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2UN-xb-gHg" id="7Ly-cK-mki"/>
+                        <outlet property="titleItem" destination="XpI-lb-eAp" id="F5M-By-XlO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkB-zU-yOA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -637,6 +656,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="46M-Ny-l1M"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vCf-mJ-vC4"/>
                     <connections>
                         <outlet property="actorLabel" destination="77r-JM-fM5" id="nEg-4Q-HA0"/>
                         <outlet property="audienceLabel" destination="GlN-oR-J9s" id="g7N-aB-vD1"/>
@@ -658,6 +678,7 @@
                         <outlet property="synopsisTextView" destination="6F7-vA-B4r" id="NAh-9M-uGC"/>
                         <outlet property="synopsisView" destination="3li-jO-TrB" id="x47-n0-dQL"/>
                         <outlet property="tableView" destination="w62-bQ-Yxj" id="GZd-PP-l7y"/>
+                        <outlet property="titleItem" destination="vCf-mJ-vC4" id="AKC-9j-eCe"/>
                         <outlet property="titleLabel" destination="5eL-b0-Epe" id="Qlo-3O-9oT"/>
                         <outlet property="totalStackView" destination="pfv-pY-c9u" id="yVp-lj-OYd"/>
                         <outlet property="userRatingLabel" destination="zWP-l1-bho" id="Ycv-8x-MU5"/>
@@ -744,6 +765,7 @@
     <resources>
         <image name="btn_compose" width="23" height="23"/>
         <image name="ic_collection" width="25" height="25"/>
+        <image name="ic_settings" width="24" height="24"/>
         <image name="ic_star_large" width="48" height="48"/>
         <image name="ic_table" width="24" height="24"/>
         <image name="ic_user_loading" width="36" height="36"/>

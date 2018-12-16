@@ -11,11 +11,17 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var titleItem: UINavigationItem!
     
     let movieCellIdentifier: String = "tableCell"
     var movies: [Movie] = []
     
     private var refreshControl = UIRefreshControl()
+    
+    // MARK: - IBActions
+    @IBAction func touchUpOrderButton(_ sender: UIBarButtonItem) {
+        self.showActionSheetController()
+    }
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,10 +82,12 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        addPullToRefresh()
+        AddPullToRefresh()
         
         //Add Observer for movies data
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMoviesNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
+        
+        requestMovies()
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,8 +97,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        requestMovies(0)
     }
     
     @objc func didRecieveMoviesNotification(_ noti: Notification) {
@@ -100,12 +106,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.movies = movies
         
         DispatchQueue.main.async {
+            if OrderType.getOrderType() == 0 {
+                self.titleItem?.title = "예매율 순"
+            } else if OrderType.getOrderType() == 1 {
+                self.titleItem?.title = "큐레이션 순"
+            } else if OrderType.getOrderType() == 2 {
+                self.titleItem?.title = "개봉일 순"
+            }
             self.tableView.reloadData()
         }
     }
     
     // MARK: - Refresh
-    func addPullToRefresh() {
+    func AddPullToRefresh() {
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
@@ -116,9 +129,43 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     @objc func refresh() {
-        requestMovies(1)
+        requestMovies()
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
+    }
+    
+    // MARK: - Action sheet
+    func showActionSheetController() {
+        let actionSheetController: UIAlertController
+        actionSheetController = UIAlertController(title: "정렬방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let reservationRateAction: UIAlertAction
+        reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
+            OrderType.setOrderType(0)
+            requestMovies()
+        })
+        
+        let curationAction: UIAlertAction
+        curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
+            OrderType.setOrderType(1)
+            requestMovies()
+        })
+        
+        let releaseDateAction: UIAlertAction
+        releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
+            OrderType.setOrderType(2)
+            requestMovies()
+        })
+        
+        let cancelAction: UIAlertAction
+        cancelAction = UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        actionSheetController.addAction(reservationRateAction)
+        actionSheetController.addAction(curationAction)
+        actionSheetController.addAction(releaseDateAction)
+        actionSheetController.addAction(cancelAction)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

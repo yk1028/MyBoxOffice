@@ -12,14 +12,11 @@ let DidReceiveMoviesNotification: Notification.Name = Notification.Name("DidReci
 let DidReceiveMovieInfoNotification: Notification.Name = Notification.Name("DidRecieveMovieInfo")
 let DidReceiveMovieCommentsNotification: Notification.Name = Notification.Name("DidRecieveMovieComments")
 
-// orderType - 0: reservtion rate, 1: curation, 2: release date
-func requestMovies(_ orderType: Int) {
+func requestMovies() {
     
-    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(orderType)"
+    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(OrderType.getOrderType())"
     
-    guard let url:URL = URL(string: urlString) else {
-        return
-    }
+    guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -49,9 +46,7 @@ func requestMovieInfo(_ id: String) {
     
     let urlString: String = "http://connect-boxoffice.run.goorm.io/movie?id=\(id)"
     
-    guard let url:URL = URL(string: urlString) else {
-        return
-    }
+    guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -81,9 +76,7 @@ func requestMovieComments(_ id: String) {
     
     let urlString: String = "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)"
     
-    guard let url:URL = URL(string: urlString) else {
-        return
-    }
+    guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in

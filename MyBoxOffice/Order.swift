@@ -8,8 +8,17 @@
 
 import Foundation
 
-var orderType: OrderType = OrderType()
-
-struct OrderType {
-    var orderType: Int = 0
+class OrderType {
+    
+    // orderType - 0: reservtion rate, 1: curation, 2: release date
+    private static var orderType: Int = 0
+    
+    class func getOrderType() -> Int {
+        return self.orderType
+    }
+    
+    class func setOrderType(_ orderType: Int) {
+        if orderType < 0 || orderType > 3 { return }
+        self.orderType = orderType
+    }
 }
