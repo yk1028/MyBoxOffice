@@ -39,15 +39,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.infoLabel?.text = movie.fullInfoInCollection
         cell.dateLabel?.text = movie.releaseDate
         
-        //url
         let imageURL: URL = URL(string: movie.thumb)!
         
-        //dispatchQueue?
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         OperationQueue().addOperation {
             let imageData: Data = try! Data.init(contentsOf: imageURL)
             let image: UIImage = UIImage(data: imageData)!
             
             OperationQueue.main.addOperation {
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
                 cell.thumbImageView?.image = image
             }
         }

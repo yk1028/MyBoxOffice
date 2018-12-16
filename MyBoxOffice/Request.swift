@@ -21,7 +21,16 @@ func requestMovies(viewController: UIViewController) {
     guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
+    
+    DispatchQueue.main.async {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
         
         if let error = error {
             AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)
@@ -52,7 +61,16 @@ func requestMovieInfo(id: String, viewController: UIViewController) {
     guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
+    
+    DispatchQueue.main.async {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
         
         if let error = error {
             AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)
@@ -83,7 +101,16 @@ func requestMovieComments(id: String, viewController: UIViewController) {
     guard let url:URL = URL(string: urlString) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
+    
+    DispatchQueue.main.async {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
     let dataTask: URLSessionDataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
         
         if let error = error {
             AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)

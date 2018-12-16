@@ -39,12 +39,17 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.dateLabel?.text = movie.releaseDate
         
         let imageURL: URL = URL(string: movie.thumb)!
-
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+        
         OperationQueue().addOperation {
             let imageData: Data = try! Data.init(contentsOf: imageURL)
             let image: UIImage = UIImage(data: imageData)!
 
             OperationQueue.main.addOperation {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 cell.thumbImageView?.image = image
             }
         }

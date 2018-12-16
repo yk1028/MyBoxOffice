@@ -90,12 +90,15 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         DispatchQueue.main.async {
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
             OperationQueue().addOperation {
                 let imageURL: URL = URL(string: movieInfo.image)!
                 let imageData: Data = try! Data.init(contentsOf: imageURL)
                 let image: UIImage = UIImage(data: imageData)!
                 
                 OperationQueue.main.addOperation {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.imageView?.image = image
                 }
             }
