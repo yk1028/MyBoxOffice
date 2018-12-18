@@ -160,7 +160,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: CommentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.commentCellIdentifier, for: indexPath) as! CommentsTableViewCell
+        let cell: CommentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.commentCellIdentifier, for: indexPath) as? CommentsTableViewCell ?? CommentsTableViewCell()
         
         let comment: Comment = self.comments[indexPath.row]
         

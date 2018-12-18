@@ -30,29 +30,13 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell: MoviesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! MoviesCollectionViewCell
+        let cell: MoviesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? MoviesCollectionViewCell ?? MoviesCollectionViewCell()
         
         let movie: Movie = self.movies[indexPath.item]
         
         cell.titleLabel?.text = movie.title
         cell.infoLabel?.text = movie.fullInfoInCollection
         cell.dateLabel?.text = movie.releaseDate
-        
-        let imageURL: URL = URL(string: movie.thumb)!
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        OperationQueue().addOperation {
-            let imageData: Data = try! Data.init(contentsOf: imageURL)
-            let image: UIImage = UIImage(data: imageData)!
-            
-            OperationQueue.main.addOperation {
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                
-                cell.thumbImageView?.image = image
-            }
-        }
         
         var grade: String
         switch movie.grade {
@@ -71,6 +55,24 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.gradeImageView?.image = UIImage(named: grade)
         
         cell.movieId = movie.id
+        
+        guard let imageURL: URL = URL(string: movie.thumb) else {
+            return cell
+        }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        OperationQueue().addOperation {
+            let imageData: Data = try! Data.init(contentsOf: imageURL)
+            let image: UIImage = UIImage(data: imageData)!
+            
+            OperationQueue.main.addOperation {
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                cell.thumbImageView?.image = image
+            }
+        }
         
         return cell
     }
