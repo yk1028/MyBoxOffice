@@ -6,7 +6,6 @@
 //  Copyright © 2018년 Wongeun Song. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 let DidReceiveMoviesNotification: Notification.Name = Notification.Name("DidRecieveMovies")
