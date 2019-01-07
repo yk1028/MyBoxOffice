@@ -56,21 +56,28 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         cell.movieId = movie.id
         
-        guard let imageURL: URL = URL(string: movie.thumb) else {
-            return cell
-        }
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        OperationQueue().addOperation {
-            let imageData: Data = try! Data.init(contentsOf: imageURL)
-            let image: UIImage = UIImage(data: imageData)!
+        if let imageURL: URL = URL(string: movie.thumb) {
             
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
+            
+            OperationQueue().addOperation {
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                do {
+                    let imageData: Data = try Data.init(contentsOf: imageURL)
+                    if let image: UIImage = UIImage(data: imageData){
+                        OperationQueue.main.addOperation {
+                            cell.thumbImageView.image = image
+                        }
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
                 
-                cell.thumbImageView.image = image
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }
         }
         

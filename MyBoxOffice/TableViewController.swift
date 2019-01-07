@@ -56,21 +56,27 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.movieId = movie.id
         
-        guard let imageURL: URL = URL(string: movie.thumb) else {
-            return cell
-        }
-        
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-        
-        OperationQueue().addOperation {
-            let imageData: Data = try! Data.init(contentsOf: imageURL)
-            let image: UIImage = UIImage(data: imageData)!
-
-            OperationQueue.main.addOperation {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                cell.thumbImageView.image = image
+        if let imageURL: URL = URL(string: movie.thumb) {
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
+            
+            OperationQueue().addOperation {
+                
+                do {
+                    let imageData: Data = try Data.init(contentsOf: imageURL)
+                    if let image: UIImage = UIImage(data: imageData){
+                        OperationQueue.main.addOperation {
+                            cell.thumbImageView.image = image
+                        }
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }
         }
         
