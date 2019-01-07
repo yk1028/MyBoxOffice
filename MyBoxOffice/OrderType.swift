@@ -19,7 +19,7 @@ class OrderType {
             return orderType
         }
         set {
-            if newValue >= 0, newValue <= 3{
+            if newValue >= 0, newValue <= 2{
                 orderType = newValue
             }
         }
