@@ -99,11 +99,11 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 OperationQueue.main.addOperation {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    self.imageView?.image = image
+                    self.imageView.image = image
                 }
             }
             
-            self.titleItem?.title = movieInfo.title
+            self.titleItem.title = movieInfo.title
             
             var grade: String
             switch movieInfo.grade {
@@ -119,13 +119,13 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 grade = "img_placeholder"
             }
             
-            self.gradeImageView?.image = UIImage(named: grade)
+            self.gradeImageView.image = UIImage(named: grade)
             
-            self.titleLabel?.text = movieInfo.title
-            self.dateLabel?.text = movieInfo.date + "개봉"
-            self.genreAndDurationLabel?.text = movieInfo.genreAndDuration
-            self.reservationLabel?.text = movieInfo.reservationInfo
-            self.userRatingLabel?.text = String(movieInfo.userRating)
+            self.titleLabel.text = movieInfo.title
+            self.dateLabel.text = movieInfo.date + "개봉"
+            self.genreAndDurationLabel.text = movieInfo.genreAndDuration
+            self.reservationLabel.text = movieInfo.reservationInfo
+            self.userRatingLabel.text = String(movieInfo.userRating)
             
             self.starRating(rating: movieInfo.userRating, stars: [self.starImage1, self.starImage2, self.starImage3, self.starImage4, self.starImage5])
             
@@ -133,11 +133,11 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .decimal
             let audience = numberFormatter.string(from: NSNumber(value: movieInfo.audience))!
-            self.audienceLabel?.text = audience
+            self.audienceLabel.text = audience
             
-            self.synopsisTextView?.text = movieInfo.synopsis
-            self.directorLabel?.text = movieInfo.director
-            self.actorLabel?.text = movieInfo.actor
+            self.synopsisTextView.text = movieInfo.synopsis
+            self.directorLabel.text = movieInfo.director
+            self.actorLabel.text = movieInfo.actor
             
         }
     }
@@ -164,9 +164,9 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let comment: Comment = self.comments[indexPath.row]
         
-        cell.userNameLabel?.text = comment.writer
-        cell.timestampLabel?.text = timestampToString(comment.timestamp)
-        cell.contentsText?.text = comment.contents
+        cell.userNameLabel.text = comment.writer
+        cell.timestampLabel.text = timestampToString(comment.timestamp)
+        cell.contentsText.text = comment.contents
         
         self.starRating(rating: comment.rating, stars: [cell.starImage1, cell.starImage2, cell.starImage3, cell.starImage4, cell.starImage5])
 

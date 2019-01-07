@@ -34,9 +34,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let movie: Movie = self.movies[indexPath.row]
         
-        cell.titleLabel?.text = movie.title
-        cell.infoLabel?.text = movie.fullInfoInTable
-        cell.dateLabel?.text = movie.releaseDate
+        cell.titleLabel.text = movie.title
+        cell.infoLabel.text = movie.fullInfoInTable
+        cell.dateLabel.text = movie.releaseDate
         
         var grade: String
         switch movie.grade {
@@ -52,7 +52,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             grade = "img_placeholder"
         }
         
-        cell.gradeImageView?.image = UIImage(named: grade)
+        cell.gradeImageView.image = UIImage(named: grade)
         
         cell.movieId = movie.id
         
@@ -70,7 +70,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
             OperationQueue.main.addOperation {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                cell.thumbImageView?.image = image
+                cell.thumbImageView.image = image
             }
         }
         
@@ -104,11 +104,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         DispatchQueue.main.async {
             if OrderType.orderTypeProperty == 0 {
-                self.titleItem?.title = "예매율 순"
+                self.titleItem.title = "예매율 순"
             } else if OrderType.orderTypeProperty == 1 {
-                self.titleItem?.title = "큐레이션 순"
+                self.titleItem.title = "큐레이션 순"
             } else if OrderType.orderTypeProperty == 2 {
-                self.titleItem?.title = "개봉일 순"
+                self.titleItem.title = "개봉일 순"
             }
             self.tableView.reloadData()
         }

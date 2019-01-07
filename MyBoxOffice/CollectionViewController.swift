@@ -34,9 +34,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let movie: Movie = self.movies[indexPath.item]
         
-        cell.titleLabel?.text = movie.title
-        cell.infoLabel?.text = movie.fullInfoInCollection
-        cell.dateLabel?.text = movie.releaseDate
+        cell.titleLabel.text = movie.title
+        cell.infoLabel.text = movie.fullInfoInCollection
+        cell.dateLabel.text = movie.releaseDate
         
         var grade: String
         switch movie.grade {
@@ -52,7 +52,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             grade = "img_placeholder"
         }
         
-        cell.gradeImageView?.image = UIImage(named: grade)
+        cell.gradeImageView.image = UIImage(named: grade)
         
         cell.movieId = movie.id
         
@@ -70,7 +70,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
-                cell.thumbImageView?.image = image
+                cell.thumbImageView.image = image
             }
         }
         
@@ -98,11 +98,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         DispatchQueue.main.async {
             if OrderType.orderTypeProperty == 0 {
-                self.titleItem?.title = "예매율 순"
+                self.titleItem.title = "예매율 순"
             } else if OrderType.orderTypeProperty == 1 {
-                self.titleItem?.title = "큐레이션 순"
+                self.titleItem.title = "큐레이션 순"
             } else if OrderType.orderTypeProperty == 2 {
-                self.titleItem?.title = "개봉일 순"
+                self.titleItem.title = "개봉일 순"
             }
             self.collectionView.reloadData()
         }

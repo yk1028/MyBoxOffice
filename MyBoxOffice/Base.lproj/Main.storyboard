@@ -590,6 +590,7 @@
                                                             <outlet property="starImage4" destination="waO-Ny-p1g" id="xFM-lF-55k"/>
                                                             <outlet property="starImage5" destination="K15-Vm-YeA" id="VVn-4g-Lfj"/>
                                                             <outlet property="timestampLabel" destination="Nfr-KG-bB8" id="k8R-4t-4GI"/>
+                                                            <outlet property="userImageView" destination="yM7-Ak-OOL" id="m6Z-m9-9iJ"/>
                                                             <outlet property="userNameLabel" destination="JTy-CF-Uhy" id="na4-Ur-ZFC"/>
                                                         </connections>
                                                     </tableViewCell>
