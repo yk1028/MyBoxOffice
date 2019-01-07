@@ -18,7 +18,7 @@
 		EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */; };
 		ECE5A68821C50B13007BA2AC /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */; };
 		ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */; };
-		ECFC304721C6169B006E8586 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC304621C6169B006E8586 /* Order.swift */; };
+		ECFC304721C6169B006E8586 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFC304621C6169B006E8586 /* OrderType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionViewCell.swift; sourceTree = "<group>"; };
-		ECFC304621C6169B006E8586 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		ECFC304621C6169B006E8586 /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 			children = (
 				EC352FC921BD0D1100433AAD /* AppDelegate.swift */,
 				EC352FCB21BD0D1100433AAD /* TableViewController.swift */,
-				ECFC304621C6169B006E8586 /* Order.swift */,
+				ECFC304621C6169B006E8586 /* OrderType.swift */,
 				EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */,
 				EC352FDF21BD1F3E00433AAD /* Request.swift */,
 				EC352FE121BD1F4B00433AAD /* Model.swift */,
@@ -160,7 +160,7 @@
 				EC352FCC21BD0D1100433AAD /* TableViewController.swift in Sources */,
 				EC352FE021BD1F3E00433AAD /* Request.swift in Sources */,
 				ECFBFF6C21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift in Sources */,
-				ECFC304721C6169B006E8586 /* Order.swift in Sources */,
+				ECFC304721C6169B006E8586 /* OrderType.swift in Sources */,
 				EC352FE221BD1F4B00433AAD /* Model.swift in Sources */,
 				EC352FDE21BD105000433AAD /* InfoViewController.swift in Sources */,
 				EC352FE421BD3B5E00433AAD /* MoviesTableViewCell.swift in Sources */,

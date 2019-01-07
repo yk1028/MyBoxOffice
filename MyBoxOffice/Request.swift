@@ -15,7 +15,7 @@ let DidReceiveMovieCommentsNotification: Notification.Name = Notification.Name("
 //Request movie list data and alert error message in `viewController`.
 func requestMovies(viewController: UIViewController) {
     
-    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(OrderType.getOrderType())"
+    let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(OrderType.orderTypeProperty)"
     
     guard let url:URL = URL(string: urlString) else { return }
     

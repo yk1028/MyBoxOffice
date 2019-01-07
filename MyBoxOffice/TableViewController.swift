@@ -103,11 +103,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.movies = movies
         
         DispatchQueue.main.async {
-            if OrderType.getOrderType() == 0 {
+            if OrderType.orderTypeProperty == 0 {
                 self.titleItem?.title = "예매율 순"
-            } else if OrderType.getOrderType() == 1 {
+            } else if OrderType.orderTypeProperty == 1 {
                 self.titleItem?.title = "큐레이션 순"
-            } else if OrderType.getOrderType() == 2 {
+            } else if OrderType.orderTypeProperty == 2 {
                 self.titleItem?.title = "개봉일 순"
             }
             self.tableView.reloadData()
@@ -138,19 +138,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let reservationRateAction: UIAlertAction
         reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.setOrderType(0)
+            OrderType.orderTypeProperty = 0
             requestMovies(viewController: self)
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.setOrderType(1)
+            OrderType.orderTypeProperty = 1
             requestMovies(viewController: self)
         })
         
         let releaseDateAction: UIAlertAction
         releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.setOrderType(2)
+            OrderType.orderTypeProperty = 2
             requestMovies(viewController: self)
         })
         
