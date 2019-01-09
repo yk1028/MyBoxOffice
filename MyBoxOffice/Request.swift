@@ -13,7 +13,7 @@ let DidReceiveMovieInfoNotification: Notification.Name = Notification.Name("DidR
 let DidReceiveMovieCommentsNotification: Notification.Name = Notification.Name("DidRecieveMovieComments")
 
 //Request movie list data and alert error message in `viewController`.
-func requestMovies(viewController: UIViewController) {
+func requestMovies(completion: @escaping(_ error: Error?) -> () = { _ in }) {
     
     let urlString: String = "http://connect-boxoffice.run.goorm.io/movies?order_type=\(OrderType.orderTypeProperty)"
     
@@ -32,7 +32,7 @@ func requestMovies(viewController: UIViewController) {
         }
         
         if let error = error {
-            AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)
+            completion(error)
             return
         }
         
@@ -44,8 +44,8 @@ func requestMovies(viewController: UIViewController) {
 
             NotificationCenter.default.post(name: DidReceiveMoviesNotification, object: nil, userInfo: ["movies": movies.movies])
             
-        } catch(let err) {
-            AlertFailMessage(viewController: viewController, errorMessage: err.localizedDescription)
+        } catch {
+            completion(error)
         }
     }
     
@@ -53,7 +53,7 @@ func requestMovies(viewController: UIViewController) {
 }
 
 //request movie information data from server with `id` and alert error message in `viewController`.
-func requestMovieInfo(id: String, viewController: UIViewController) {
+func requestMovieInfo(id: String, completion: @escaping(_ error: Error?) -> () = { _ in }) {
     
     let urlString: String = "http://connect-boxoffice.run.goorm.io/movie?id=\(id)"
     
@@ -72,7 +72,7 @@ func requestMovieInfo(id: String, viewController: UIViewController) {
         }
         
         if let error = error {
-            AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)
+            completion(error)
             return
         }
         
@@ -84,8 +84,8 @@ func requestMovieInfo(id: String, viewController: UIViewController) {
             
             NotificationCenter.default.post(name: DidReceiveMovieInfoNotification, object: nil, userInfo: ["movie": movieInfo])
             
-        } catch(let err) {
-            AlertFailMessage(viewController: viewController, errorMessage: err.localizedDescription)
+        } catch {
+            completion(error)
         }
     }
     
@@ -93,7 +93,7 @@ func requestMovieInfo(id: String, viewController: UIViewController) {
 }
 
 //request movie comments data from server with `id` and alert error message in `viewController`.
-func requestMovieComments(id: String, viewController: UIViewController) {
+func requestMovieComments(id: String, completion: @escaping(_ error: Error?) -> () = { _ in }) {
     
     let urlString: String = "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(id)"
     
@@ -112,7 +112,7 @@ func requestMovieComments(id: String, viewController: UIViewController) {
         }
         
         if let error = error {
-            AlertFailMessage(viewController: viewController, errorMessage: error.localizedDescription)
+            completion(error)
             return
         }
         
@@ -124,23 +124,10 @@ func requestMovieComments(id: String, viewController: UIViewController) {
             
             NotificationCenter.default.post(name: DidReceiveMovieCommentsNotification, object: nil, userInfo: ["comments": comments.comments])
             
-        } catch(let err) {
-            AlertFailMessage(viewController: viewController, errorMessage: err.localizedDescription)
+        } catch {
+            completion(error)
         }
     }
     
     dataTask.resume()
-}
-
-//Alert `errorMessage` in `viewController`.
-func AlertFailMessage(viewController: UIViewController, errorMessage: String) {
-    let actionSheetController: UIAlertController
-    actionSheetController = UIAlertController(title: "ERROR!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-    
-    let cancelAction: UIAlertAction
-    cancelAction = UIAlertAction(title: "닫기", style: UIAlertActionStyle.cancel, handler: nil)
-    
-    actionSheetController.addAction(cancelAction)
-    
-    viewController.present(actionSheetController, animated: true, completion: nil)
 }

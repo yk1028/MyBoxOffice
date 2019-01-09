@@ -94,7 +94,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
-        requestMovies(viewController: self)
+        requestMovies(){
+            (error) in
+            if let error = error {
+                self.AlertFailMessage(errorMessage: error.localizedDescription)
+            }
+        }
     }
     
     @objc func didRecieveMovieNotification(_ noti: Notification) {
@@ -143,7 +148,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc func refresh() {
-        requestMovies(viewController: self)
+        requestMovies(){
+            (error) in
+            if let error = error {
+                self.AlertFailMessage(errorMessage: error.localizedDescription)
+            }
+        }
         self.collectionView.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -156,19 +166,34 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let reservationRateAction: UIAlertAction
         reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.orderTypeProperty = 0
-            requestMovies(viewController: self)
+            requestMovies(){
+                (error) in
+                if let error = error {
+                    self.AlertFailMessage(errorMessage: error.localizedDescription)
+                }
+            }
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.orderTypeProperty = 1
-            requestMovies(viewController: self)
+            requestMovies(){
+                (error) in
+                if let error = error {
+                    self.AlertFailMessage(errorMessage: error.localizedDescription)
+                }
+            }
         })
         
         let releaseDateAction: UIAlertAction
         releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
             OrderType.orderTypeProperty = 2
-            requestMovies(viewController: self)
+            requestMovies(){
+                (error) in
+                if let error = error {
+                    self.AlertFailMessage(errorMessage: error.localizedDescription)
+                }
+            }
         })
         
         let cancelAction: UIAlertAction
@@ -190,6 +215,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         else {
             self.present(actionSheetController, animated: true, completion: nil)
         }
+    }
+    
+    //Alert `errorMessage` in `viewController`.
+    func AlertFailMessage(errorMessage: String) {
+        let actionSheetController: UIAlertController
+        actionSheetController = UIAlertController(title: "ERROR!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction: UIAlertAction
+        cancelAction = UIAlertAction(title: "닫기", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        actionSheetController.addAction(cancelAction)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

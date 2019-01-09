@@ -54,8 +54,18 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMovieCommentsNotification(_:)), name: DidReceiveMovieCommentsNotification, object: nil)
         
-        requestMovieInfo(id: self.movieId, viewController: self)
-        requestMovieComments(id: self.movieId,viewController: self)
+        requestMovieInfo(id: self.movieId) {
+            (error) in
+            if let error = error {
+                self.AlertFailMessage(errorMessage: error.localizedDescription)
+            }
+        }
+        requestMovieComments(id: self.movieId) {
+            (error) in
+            if let error = error {
+                self.AlertFailMessage(errorMessage: error.localizedDescription)
+            }
+        }
         
         self.initBorders()
         
@@ -221,6 +231,19 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 break
             }
         }
+    }
+    
+    //Alert `errorMessage` in `viewController`.
+    func AlertFailMessage(errorMessage: String) {
+        let actionSheetController: UIAlertController
+        actionSheetController = UIAlertController(title: "ERROR!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction: UIAlertAction
+        cancelAction = UIAlertAction(title: "닫기", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        actionSheetController.addAction(cancelAction)
+        
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     // MARK: - Border
