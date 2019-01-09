@@ -60,7 +60,6 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.initBorders()
         
         self.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,7 +75,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidLayoutSubviews() {
-        self.repositionBorders() // Repositioning borders when device was rotated.
+        self.relocationBorders() // Repositioning borders when device was rotated.
     }
 
     override func didReceiveMemoryWarning() {
@@ -241,7 +240,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.ratingStackView.layer.addSublayer(self.borders[4])
     }
     
-    func repositionBorders() {
+    func relocationBorders() {
         let screenWidth: CGFloat = UIScreen.main.bounds.width
         self.borders[0].frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 8.0)
         self.borders[1].frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 8.0)
