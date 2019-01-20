@@ -94,7 +94,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        AddPullToRefresh()
+        addPullToRefresh()
         
         //Add Observer for movies data
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMoviesNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
@@ -126,7 +126,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // MARK: - Refresh
-    func AddPullToRefresh() {
+    func addPullToRefresh() {
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
