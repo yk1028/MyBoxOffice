@@ -49,6 +49,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5FE687121F4A1050042F504 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
+				EC352FDB21BD100400433AAD /* CollectionViewController.swift */,
+				EC352FCB21BD0D1100433AAD /* TableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D5FE687221F4A10E0042F504 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
+				EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */,
+				ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */,
+				ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D5FE687321F4A7480042F504 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ECFC304621C6169B006E8586 /* OrderType.swift */,
+				EC352FE121BD1F4B00433AAD /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EC352FBD21BD0D1000433AAD = {
 			isa = PBXGroup;
 			children = (
@@ -68,17 +98,11 @@
 		EC352FC821BD0D1100433AAD /* MyBoxOffice */ = {
 			isa = PBXGroup;
 			children = (
-				EC352FC921BD0D1100433AAD /* AppDelegate.swift */,
-				EC352FCB21BD0D1100433AAD /* TableViewController.swift */,
-				ECFC304621C6169B006E8586 /* OrderType.swift */,
-				EC352FE321BD3B5E00433AAD /* MoviesTableViewCell.swift */,
+				D5FE687321F4A7480042F504 /* Models */,
+				D5FE687221F4A10E0042F504 /* Views */,
+				D5FE687121F4A1050042F504 /* Controllers */,
 				EC352FDF21BD1F3E00433AAD /* Request.swift */,
-				EC352FE121BD1F4B00433AAD /* Model.swift */,
-				EC352FCD21BD0D1100433AAD /* Main.storyboard */,
-				ECFBFF6B21C0CE0200B6CD11 /* MoviesCollectionViewCell.swift */,
-				EC352FDD21BD105000433AAD /* InfoViewController.swift */,
-				ECE5A68721C50B13007BA2AC /* CommentsTableViewCell.swift */,
-				EC352FDB21BD100400433AAD /* CollectionViewController.swift */,
+				EC352FC921BD0D1100433AAD /* AppDelegate.swift */,
 				EC352FD021BD0D1100433AAD /* Assets.xcassets */,
 				EC352FD521BD0D1100433AAD /* Info.plist */,
 			);
@@ -112,7 +136,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Wongeun Song";
 				TargetAttributes = {
 					EC352FC521BD0D1100433AAD = {
@@ -197,6 +221,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -204,6 +229,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -254,6 +280,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -261,6 +288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -295,6 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyBoxOffice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyBoxOffice;
@@ -309,6 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyBoxOffice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyBoxOffice;
