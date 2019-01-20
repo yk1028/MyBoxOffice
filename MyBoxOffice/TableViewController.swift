@@ -99,12 +99,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Add Observer for movies data
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMoviesNotification(_:)), name: DidReceiveMoviesNotification, object: nil)
         
-        requestMovies(){
-            (error) in
-            if let error = error {
-                self.AlertFailMessage(errorMessage: error.localizedDescription)
-            }
-        }
+        self.requestMoviesWithEscaping()
+
     }
     
     @objc func didRecieveMoviesNotification(_ noti: Notification) {
@@ -132,91 +128,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         } else {
             tableView.addSubview(refreshControl)
         }
-        
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 
     @objc func refresh() {
-        requestMovies(){
-            (error) in
-            if let error = error {
-                self.AlertFailMessage(errorMessage: error.localizedDescription)
-            }
-        }
+        self.requestMoviesWithEscaping()
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
-    }
-    
-    // MARK: - Action sheet
-    func showActionSheetController() {
-        let actionSheetController: UIAlertController
-        actionSheetController = UIAlertController(title: "정렬방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        let reservationRateAction: UIAlertAction
-        reservationRateAction = UIAlertAction(title: "예매율", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.orderTypeProperty = 0
-            requestMovies(){
-                (error) in
-                if let error = error {
-                    self.AlertFailMessage(errorMessage: error.localizedDescription)
-                }
-            }
-        })
-        
-        let curationAction: UIAlertAction
-        curationAction = UIAlertAction(title: "큐레이션", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.orderTypeProperty = 1
-            requestMovies(){
-                (error) in
-                if let error = error {
-                    self.AlertFailMessage(errorMessage: error.localizedDescription)
-                }
-            }
-        })
-        
-        let releaseDateAction: UIAlertAction
-        releaseDateAction = UIAlertAction(title: "개봉일", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-            OrderType.orderTypeProperty = 2
-            requestMovies(){
-                (error) in
-                if let error = error {
-                    self.AlertFailMessage(errorMessage: error.localizedDescription)
-                }
-            }
-        })
-        
-        let cancelAction: UIAlertAction
-        cancelAction = UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel, handler: nil)
-        
-        actionSheetController.addAction(reservationRateAction)
-        actionSheetController.addAction(curationAction)
-        actionSheetController.addAction(releaseDateAction)
-        actionSheetController.addAction(cancelAction)
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if let popoverController = actionSheetController.popoverPresentationController {
-                popoverController.sourceView = self.view
-                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-                popoverController.permittedArrowDirections = []
-                self.present(actionSheetController, animated: true, completion: nil)
-            }
-        }
-        else {
-            self.present(actionSheetController, animated: true, completion: nil)
-        }
-    }
-    
-    //Alert `errorMessage` in `viewController`.
-    func AlertFailMessage(errorMessage: String) {
-        let actionSheetController: UIAlertController
-        actionSheetController = UIAlertController(title: "ERROR!", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        
-        let cancelAction: UIAlertAction
-        cancelAction = UIAlertAction(title: "닫기", style: UIAlertActionStyle.cancel, handler: nil)
-        
-        actionSheetController.addAction(cancelAction)
-        
-        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
