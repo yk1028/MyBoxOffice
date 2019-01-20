@@ -18,4 +18,11 @@ class MoviesTableViewCell: UITableViewCell {
     
     var movieId: String?
 
+    override func prepareForReuse() {
+        titleLabel.text = nil
+        infoLabel.text = nil
+        dateLabel.text = nil
+        thumbImageView.image = nil
+        gradeImageView.image = nil
+    }
 }

@@ -28,6 +28,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return movies.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: MoviesTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.movieCellIdentifier, for: indexPath) as? MoviesTableViewCell ?? MoviesTableViewCell()
