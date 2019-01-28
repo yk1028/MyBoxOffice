@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var titleItem: UINavigationItem!
@@ -17,77 +17,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     var movies: [Movie] = []
     
     private var refreshControl = UIRefreshControl()
-    
-    // MARK: - IBActions
-    @IBAction func touchUpOrderButton(_ sender: UIBarButtonItem) {
-        self.showActionSheetController()
-    }
-    
-    // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell: MoviesTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.movieCellIdentifier, for: indexPath) as? MoviesTableViewCell ?? MoviesTableViewCell()
-        
-        let movie: Movie = self.movies[indexPath.row]
-        
-        cell.titleLabel.text = movie.title
-        cell.infoLabel.text = movie.fullInfoInTable
-        cell.dateLabel.text = movie.releaseDate
-        
-        var grade: String
-        switch movie.grade {
-        case 0:
-            grade = "ic_allages"
-        case 12:
-            grade = "ic_12"
-        case 15:
-            grade = "ic_15"
-        case 19:
-            grade = "ic_19"
-        default:
-            grade = "img_placeholder"
-        }
-        
-        cell.gradeImageView.image = UIImage(named: grade)
-        
-        cell.movieId = movie.id
-        
-        if let imageURL: URL = URL(string: movie.thumb) {
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            }
-            
-            OperationQueue().addOperation {
-                
-                do {
-                    let imageData: Data = try Data.init(contentsOf: imageURL)
-                    if let image: UIImage = UIImage(data: imageData){
-                        OperationQueue.main.addOperation {
-                            cell.thumbImageView.image = image
-                        }
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-                
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
-        }
-        
-        return cell
-    }
-    
-    // MARK: Table view delegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 130.0;
-    }
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -106,6 +35,14 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
+    
+    
+    // MARK: - IBActions
+    @IBAction func touchUpOrderButton(_ sender: UIBarButtonItem) {
+        self.showActionSheetController()
+    }
+    
+    
     
     @objc func didRecieveMoviesNotification(_ noti: Notification) {
         
@@ -234,4 +171,28 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+}
+
+extension TableViewController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: MoviesTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.movieCellIdentifier, for: indexPath) as? MoviesTableViewCell ?? MoviesTableViewCell()
+        
+        let movie: Movie = self.movies[indexPath.row]
+        
+        cell.configure(movie)
+        
+        return cell
+    }
+    
+    // MARK: Table view delegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 130.0;
+    }
 }
