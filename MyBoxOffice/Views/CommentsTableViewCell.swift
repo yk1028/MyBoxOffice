@@ -20,5 +20,7 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet var starImage3: UIImageView!
     @IBOutlet var starImage4: UIImageView!
     @IBOutlet var starImage5: UIImageView!
+    
+    @IBOutlet var starImages: [UIImageView]!
 
 }
