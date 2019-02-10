@@ -3,7 +3,7 @@ Boostcamp 3기 ios 사전과제
 
 ## 개발환경
 * Swift 4.2.1
-* Xcode 10.0
+* Xcode 10.1
 * macOS High Sierra
 
 ## 화면 1
